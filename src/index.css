@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hacker-themed design system with neon green accents and dark aesthetics */
+
+@layer base {
+  :root {
+    /* Dark hacker theme colors - all HSL */
+    --background: 0 0% 4%;
+    --foreground: 120 100% 85%;
+
+    --card: 0 0% 6%;
+    --card-foreground: 120 100% 85%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 120 100% 85%;
+
+    /* Neon green primary */
+    --primary: 120 100% 50%;
+    --primary-foreground: 0 0% 4%;
+
+    /* Dark secondary */
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 120 100% 85%;
+
+    --muted: 0 0% 8%;
+    --muted-foreground: 120 30% 60%;
+
+    --accent: 180 100% 50%;
+    --accent-foreground: 0 0% 4%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 120 30% 20%;
+    --input: 0 0% 10%;
+    --ring: 120 100% 50%;
+
+    --radius: 0.5rem;
+
+    /* Hacker-specific colors */
+    --neon-green: 120 100% 50%;
+    --neon-green-glow: 120 100% 50%;
+    --electric-blue: 195 100% 50%;
+    --terminal-green: 120 100% 25%;
+    --dark-bg: 0 0% 4%;
+    --darker-bg: 0 0% 2%;
+    --console-bg: 0 0% 6%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(120 100% 50%), hsl(120 100% 35%));
+    --gradient-dark: linear-gradient(135deg, hsl(0 0% 4%), hsl(0 0% 8%));
+    --gradient-glow: linear-gradient(135deg, hsl(120 100% 50% / 0.1), hsl(195 100% 50% / 0.1));
+
+    /* Shadows and effects */
+    --shadow-neon: 0 0 20px hsl(120 100% 50% / 0.5);
+    --shadow-neon-strong: 0 0 30px hsl(120 100% 50% / 0.8);
+    --shadow-electric: 0 0 20px hsl(195 100% 50% / 0.4);
+    --glow-text: 0 0 10px hsl(120 100% 50% / 0.8);
+
+    /* Animation durations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-glow: all 0.2s ease-in-out;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-mono antialiased;
+    background: linear-gradient(135deg, hsl(0 0% 2%) 0%, hsl(0 0% 4%) 50%, hsl(0 0% 2%) 100%);
+    min-height: 100vh;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(0 0% 6%);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(120 100% 50%);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(120 100% 60%);
+  }
+}
+
+@layer components {
+
+  /* Hacker text effects */
+  .text-neon {
+    color: hsl(var(--neon-green));
+    text-shadow: var(--glow-text);
+  }
+
+  .text-electric {
+    color: hsl(var(--electric-blue));
+    text-shadow: 0 0 10px hsl(195 100% 50% / 0.6);
+  }
+
+  .glow-effect {
+    box-shadow: var(--shadow-neon);
+    transition: var(--transition-glow);
+  }
+
+  .glow-effect:hover {
+    box-shadow: var(--shadow-neon-strong);
+  }
+
+  /* Terminal styling */
+  .terminal-border {
+    border: 1px solid hsl(var(--neon-green));
+    background: hsl(var(--console-bg));
+  }
+
+  .console-text {
+    font-family: 'JetBrains Mono', monospace;
+    color: hsl(var(--neon-green));
+  }
+
+  /* Animated backgrounds */
+  .bg-gradient-animated {
+    background: var(--gradient-dark);
+    background-size: 200% 200%;
+    animation: gradientShift 8s ease infinite;
+  }
+
+  @keyframes gradientShift {
+
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
