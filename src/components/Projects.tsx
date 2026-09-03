@@ -139,26 +139,28 @@ const Projects = () => {
                 </div>
 
                 <div className="flex space-x-3 pt-2">
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      window.open(project.github, '_blank');
-                    }}
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
                     className="flex items-center space-x-1 text-xs font-mono text-muted-foreground hover:text-neon-green transition-colors duration-200"
                   >
                     <Github size={14} />
                     <span>Code</span>
-                  </button>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      window.open(project.demo, '_blank');
-                    }}
-                    className="flex items-center space-x-1 text-xs font-mono text-muted-foreground hover:text-electric transition-colors duration-200"
-                  >
-                    <ExternalLink size={14} />
-                    <span>Demo</span>
-                  </button>
+                  </a>
+                  {project.demo && (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex items-center space-x-1 text-xs font-mono text-muted-foreground hover:text-electric transition-colors duration-200"
+                    >
+                      <ExternalLink size={14} />
+                      <span>Demo</span>
+                    </a>
+                  )}
                 </div>
               </div>
 
@@ -213,22 +215,20 @@ const Projects = () => {
               </div>
 
               <div className="flex space-x-4 pt-4">
-                <Button
-                  variant="neon"
-                  onClick={() => window.open(selectedProject.github, '_blank')}
-                  className="flex items-center space-x-2"
-                >
-                  <Github size={16} />
-                  <span>View Code</span>
+                <Button variant="neon" asChild className="flex items-center space-x-2">
+                  <a href={selectedProject.github} target="_blank" rel="noopener noreferrer">
+                    <Github size={16} />
+                    <span>View Code</span>
+                  </a>
                 </Button>
-                <Button
-                  variant="electric"
-                  onClick={() => window.open(selectedProject.demo, '_blank')}
-                  className="flex items-center space-x-2"
-                >
-                  <ExternalLink size={16} />
-                  <span>Live Demo</span>
-                </Button>
+                {selectedProject.demo && (
+                  <Button variant="electric" asChild className="flex items-center space-x-2">
+                    <a href={selectedProject.demo} target="_blank" rel="noopener noreferrer">
+                      <ExternalLink size={16} />
+                      <span>Live Demo</span>
+                    </a>
+                  </Button>
+                )}
               </div>
             </div>
           </div>
